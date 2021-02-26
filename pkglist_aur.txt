@@ -1,0 +1,8 @@
+lf
+mpdris2
+nerd-fonts-hermit
+obs-studio-git
+polybar
+siji
+spotify-tui
+yay-git
