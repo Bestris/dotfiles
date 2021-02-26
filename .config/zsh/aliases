@@ -1,0 +1,17 @@
+#!/usr/bin/env sh
+
+#generic
+alias sleep="systemctl suspend"
+alias v="nvim"
+alias sv="sudo nvim"
+
+alias slp="systemctl suspend"
+
+#edit common configs
+alias ebspwm="v ~/.config/bspwm/bspwmrc"
+alias epolybar="v ~/.config/polybar/config"
+alias esxhkd="v ~/.config/sxhkd/sxhkdrc"
+alias edunst="v ~/.config/dunst/dunstrc"
+alias ezsh="v ~/.zshrc"
+alias envim="v ~/.config/nvim/init.vim"
+
