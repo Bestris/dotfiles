@@ -1,0 +1,192 @@
+[colors]
+color0 = ${xrdb:color0:#222}
+color1 = ${xrdb:color1:#222}
+color2 = ${xrdb:color2:#222}
+color3 = ${xrdb:color3:#222}
+color4 = ${xrdb:color4:#222}
+color5 = ${xrdb:color5:#222}
+color6 = ${xrdb:color6:#222}
+color7 = ${xrdb:color7:#222}
+color8 = ${xrdb:color8:#222}
+color9 = ${xrdb:color9:#222}
+color10 = ${xrdb:color10:#222}
+color11 = ${xrdb:color11:#222}
+color12 = ${xrdb:color12:#222}
+color13 = ${xrdb:color13:#222}
+color14 = ${xrdb:color14:#222}
+color15 = ${xrdb:color15:#222}
+color66 = ${xrdb:color66:#222}
+
+background = ${self.color0}
+background-alt = ${self.foreground}
+foreground = ${self.color6}
+foreground-alt = ${self.background}
+border = ${self.foreground}
+
+[bar/top]
+fixed-center = true
+width = 100%
+height = 24
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-left = bspwm
+modules-center = clock
+modules-right = network filesystem pulseaudio cpu memory
+
+module-margin = 1
+
+border-bottom-size = 2
+border-bottom-color = ${colors.border}
+wm-restack = bspwm
+
+scroll-up = #bspwm.prev
+scroll-down = #bspwm.next
+
+padding = 2
+
+font-0 = "Unifont-12:style=Sans-Serif:size=12;2"
+
+[bar/bottom]
+bottom = true
+fixed-center = true
+width = 100%
+height = 24
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+modules-left = xkeyboard mpd
+modules-center = date
+modules-right = title
+
+module-margin = 1
+
+border-top-size = 2
+border-top-color = ${colors.border}
+
+wm-restack = bspwm
+
+padding = 2
+
+font-0 = "Unifont-12:style=Sans-Serif:size=12;2"
+
+[module/bspwm]
+type = internal/bspwm
+
+format = <label-state>
+
+label-focused = "  %index%  "
+label-focused-background = ${colors.background-alt}
+label-focused-foreground = ${colors.foreground-alt}
+
+label-occupied = "  %index%  "
+
+label-empty = "  %index%  "
+
+label-urgent = "  %index%  "
+label-urgent-background = ${colors.color5}
+label-urgent-foreground = ${colors.foreground-alt}
+
+[module/clock]
+type = internal/date
+interval = 1
+format = <date>
+date = %T
+
+[module/date]
+type = internal/date
+interval = 30
+format = <date>
+date = %F
+
+[module/mpd]
+type = internal/mpd
+
+interval = 0.5
+
+format-online = <icon-prev> <icon-seekb> <icon-stop> <toggle> <icon-seekf> <icon-next> <icon-repeatone> <icon-random>  <label-time>  <label-song>
+format-offline = mpd is offline
+format-offline-foreground = #55
+
+label-song = %artist% - %title%
+label-song-maxlen = 45
+
+icon-play = ⏵
+icon-pause = ⏸
+icon-stop = ⏹
+icon-prev = ⏮
+icon-next = ⏭
+icon-seekb = ⏪
+icon-seekf = ⏩
+icon-random = ⤮
+icon-repeat = 🔁
+icon-repeatone = ⮐
+icon-single = 🔂
+icon-consume = ✀
+
+toggle-on-foreground = #ff
+toggle-off-foreground = #55
+
+bar-progress-width = 10
+bar-progress-indicator = |
+bar-progress-fill = -
+bar-progress-empty = -
+
+[module/pulseaudio]
+type = internal/pulseaudio
+format-volume = VOL <label-volume>
+
+interval = 5
+
+label-muted = muted
+label-muted-foreground = #55
+
+[module/cpu]
+type = internal/cpu
+
+interval = 1
+
+;format = <label> <ramp-load>
+
+label = CPU %percentage%%
+
+[module/memory]
+type = internal/memory
+
+interval = 5
+
+label = RAM %percentage_used%%
+
+[module/network]
+type = internal/network
+
+interface = enp9s0
+interval = 1
+
+udspeed-minwidth = 5
+accumulate-stats = true
+
+label-connected = %downspeed% ↡ %upspeed% ↟ %ifname% %local_ip%
+label-disconnected = no connection...
+label-disconnected-foreground = #55
+
+[module/xkeyboard]
+type = internal/xkeyboard
+
+blacklist-0 = caps lock
+blacklist-1 = num lock
+blacklist-2 = scroll lock
+
+[module/title]
+type = internal/xwindow
+
+label = %title%
+label-maxlen = 45
+
+[module/filesystem]
+type = internal/fs
+
+mount-0 = /
+
+interval = 30
+label-mounted = %mountpoint%: %percentage_used%%
